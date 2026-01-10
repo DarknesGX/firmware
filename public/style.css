@@ -13,24 +13,23 @@ body {
 }
 
 /* Star Effect */
-.stars, .stars2 {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    width: 100%; height: 100%;
-    display: block;
-}
-
 .stars {
+    position: absolute;
+    /* Negative margins prevent white edges when the stars move with the mouse */
+    top: -50px; 
+    left: -50px; 
+    right: -50px; 
+    bottom: -50px;
+    width: calc(100% + 100px); 
+    height: calc(100% + 100px);
+    display: block;
     background: transparent url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png') repeat top center;
     z-index: 0;
     opacity: 0.5;
-    animation: twinkle 5s infinite ease-in-out;
-}
-
-.stars2 {
-    background: transparent url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/twinkling.png') repeat top center;
-    z-index: 1;
-    animation: twinkle 10s infinite linear;
+    /* Slowed down to 150s for a calm effect */
+    animation: twinkle 150s infinite linear;
+    /* Smooths out the mouse following movement */
+    transition: transform 0.2s ease-out;
 }
 
 .container {
@@ -82,8 +81,14 @@ body {
 
 /* Animations */
 @keyframes pulse {
-    0%, 100% { opacity: 1; filter: drop-shadow(0 0 10px rgba(136, 226, 255, 0.5)); }
-    50% { opacity: 0.8; filter: drop-shadow(0 0 2px rgba(136, 226, 255, 0.2)); }
+    0%, 100% { 
+        opacity: 1; 
+        filter: drop-shadow(0 0 10px rgba(136, 226, 255, 0.5)); 
+    }
+    50% { 
+        opacity: 0.8; 
+        filter: drop-shadow(0 0 2px rgba(136, 226, 255, 0.2)); 
+    }
 }
 
 @keyframes twinkle {

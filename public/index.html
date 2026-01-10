@@ -11,7 +11,6 @@
 <body>
 
     <div class="stars"></div>
-    <div class="stars2"></div>
 
     <div class="container">
         <h1 class="title">Downloading...</h1>
@@ -23,5 +22,21 @@
         </a>
     </div>
 
+    <script>
+        const stars = document.querySelector('.stars');
+        
+        window.addEventListener('mousemove', (e) => {
+            // Calculate how far the mouse is from the center
+            const x = (e.clientX / window.innerWidth) - 0.5;
+            const y = (e.clientY / window.innerHeight) - 0.5;
+            
+            // Move stars slightly in the opposite direction for a depth effect
+            // Increased the multiplier (40) for a more noticeable movement
+            const moveX = x * -40;
+            const moveY = y * -40;
+            
+            stars.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+    </script>
 </body>
 </html>
