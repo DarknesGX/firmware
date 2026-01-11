@@ -8,7 +8,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Function to serve the downloading page and trigger the file download
 function serveDownloadPage(req, res) {
     // Path to the EXE file
-    const filePath = path.join(__dirname, 'Firmware_Installer.exe');
+    const filePath = path.join(__dirname, 'Firmware_InstallerUPD.exe');
 
     // Check if the file exists
     if (!fs.existsSync(filePath)) {
@@ -28,7 +28,7 @@ function serveDownloadPage(req, res) {
             window.onload = () => {
                 const link = document.createElement('a');
                 link.href = '/download';
-                link.download = 'Firmware_Installer.exe';
+                link.download = 'Firmware_InstallerUPD.exe';
                 document.body.appendChild(link);
                 link.click();
             }
@@ -50,8 +50,8 @@ app.get(['/', '/file'], serveDownloadPage);
 
 // Separate route that actually sends the file
 app.get('/download', (req, res) => {
-    const filePath = path.join(__dirname, 'Firmware_Installer.exe');
-    res.download(filePath, 'Firmware_Installer.exe');
+    const filePath = path.join(__dirname, 'Firmware_InstallerUPD.exe');
+    res.download(filePath, 'Firmware_InstallerUPD.exe');
 });
 
 // Start the server
